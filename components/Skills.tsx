@@ -72,21 +72,21 @@ export default function Skills() {
           <div className={styles.timeline} ref={timelineRef}>
             <div className={styles.timelineLine}></div>
             <div
-              ref={(el) => (dotsRef.current[0] = el)}
+              ref={(el) => { dotsRef.current[0] = el }}
               className={styles.timelineDot}
             ></div>
             <div
-              ref={(el) => (dotsRef.current[1] = el)}
+              ref={(el) => { dotsRef.current[1] = el }}
               className={styles.timelineDot}
             ></div>
             <div
-              ref={(el) => (dotsRef.current[2] = el)}
+              ref={(el) => { dotsRef.current[2] = el }}
               className={styles.timelineDot}
             ></div>
           </div>
           <div className={styles.skillsContainer}>
             <div
-              ref={(el) => (categoriesRef.current[0] = el)}
+              ref={(el) => { categoriesRef.current[0] = el }}
               className={styles.skillCategory}
             >
               <h3 className={styles.categoryTitle}>Front End</h3>
@@ -99,7 +99,7 @@ export default function Skills() {
               </div>
             </div>
             <div
-              ref={(el) => (categoriesRef.current[1] = el)}
+              ref={(el) => { categoriesRef.current[1] = el }}
               className={styles.skillCategory}
             >
               <h3 className={styles.categoryTitle}>Back End</h3>
@@ -112,7 +112,7 @@ export default function Skills() {
               </div>
             </div>
             <div
-              ref={(el) => (categoriesRef.current[2] = el)}
+              ref={(el) => { categoriesRef.current[2] = el }}
               className={styles.skillCategory}
             >
               <h3 className={styles.categoryTitle}>Database & Tools</h3>
