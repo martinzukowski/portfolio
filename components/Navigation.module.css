@@ -76,14 +76,80 @@
   width: 100%;
 }
 
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.burgerLine {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.burgerLine.open:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.burgerLine.open:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerLine.open:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
   }
 
+  .burger {
+    display: flex;
+  }
+
   .menu {
-    gap: 1rem;
-    font-size: 0.9rem;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background-color: rgba(10, 14, 39, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 2rem;
+    font-size: 1.1rem;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+  }
+
+  .menu.menuOpen {
+    right: 0;
+  }
+
+  .menu li {
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .menu li::after {
+    bottom: 0;
   }
 
   .logo {
