@@ -17,6 +17,16 @@ const allProjects = [
     image: '/project-images/ai-stock-advisor.jpg',
   },
   {
+    title: 'Interactive Particle System',
+    description:
+      'A beautiful web-based particle simulation where 300 red particles react dynamically to mouse movement on a navy blue canvas. Features smooth 60 FPS animation, real-time FPS counter, and modern UI with glassmorphism effects. Particles are attracted to the cursor and bounce off canvas edges, creating an engaging interactive experience.',
+    tech: ['HTML5 Canvas', 'JavaScript', 'CSS3'],
+    link: 'https://particle-system-ten.vercel.app/',
+    github: 'https://github.com/martinzukowski/particle-system',
+    date: 'November 2025',
+    image: '/project-images/particle.jpg',
+  },
+  {
     title: 'Akwraps.ca - Full Stack Website',
     description:
       'Developed a web service and database used by over 500 customers, increasing website impressions by 250%. Implemented Thymeleaf for server-side rendering, enhancing deployment efficiency by 30% using Docker. Utilized ThreeJS to create interactive car models and wraps to enhance user experience.',
