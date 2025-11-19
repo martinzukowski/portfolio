@@ -7,7 +7,7 @@ export const config = {
   personal: {
     name: 'Martin Zukowski',
     title: 'Computer Science Student at SFU | Full Stack Developer',
-    email: 'mza150@sfu.com',
+    email: 'mza150@sfu.ca',
     phone: '(778) 316-3212',
     location: 'Surrey, BC',
   },
