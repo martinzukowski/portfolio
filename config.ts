@@ -15,7 +15,7 @@ export const config = {
   // Social links
   social: {
     github: 'https://github.com/martinzukowski',
-    linkedin: 'https://linkedin.com/in/your-profile',
+    linkedin: 'https://www.linkedin.com/in/martin-zukowski',
     twitter: 'https://twitter.com/your-handle',
   },
 }
