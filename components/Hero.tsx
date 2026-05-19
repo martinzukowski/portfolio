@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import styles from './Hero.module.css'
 import { config } from '@/config'
-import StarBackground from './StarBackground'
+import AnimatedShaderBackground from '@/components/ui/animated-shader-background'
 
 export default function Hero() {
   return (
     <section id="hero" className={styles.hero}>
-      <StarBackground />
+      <AnimatedShaderBackground />
       <div className={styles.container}>
         <div className={styles.content}>
           <h1 className={styles.title}>

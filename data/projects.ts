@@ -11,6 +11,61 @@ export type ProjectItem = {
 /** Ordered from most recent to oldest */
 export const allProjects: ProjectItem[] = [
   {
+    title: 'Multi-View Stereo & 3D Reconstruction',
+    description:
+      'Built sparse and dense 3D reconstruction pipelines from multi-view images. Implemented the eight-point algorithm for fundamental matrix estimation, epipolar correspondence, essential matrix recovery, triangulation, and stereo rectification. Computed disparity and depth maps, estimated camera pose via DLT, and extended the pipeline to multi-view stereo with depth-map fusion and OBJ point-cloud export.',
+    tech: [
+      'Python',
+      'NumPy',
+      'SciPy',
+      'Computer Vision',
+      'Stereo Vision',
+      'SVD',
+      '3D Reconstruction',
+    ],
+    link: null,
+    github: 'https://github.com/martinzukowski/pointcloud-calc',
+    date: 'May 2026 | CMPT 412/762, SFU',
+    image: '/project-images/pointcloud-calc.png',
+  },
+  {
+    title: 'Homography Estimation & Augmented Reality',
+    description:
+      'Implemented homography estimation with FAST feature detection and BRIEF descriptors. Built direct linear transform (DLT) and normalized homography solvers, RANSAC for robust matching, and perspective warping with background compositing. Developed an augmented reality application that tracks a textbook in video and overlays dynamic content frame by frame.',
+    tech: [
+      'Python',
+      'NumPy',
+      'SciPy',
+      'OpenCV',
+      'FAST',
+      'BRIEF',
+      'RANSAC',
+      'Homography',
+    ],
+    link: null,
+    github: 'https://github.com/martinzukowski/homography',
+    date: 'May 2026 | CMPT 412, SFU',
+    image: '/project-images/homography.png',
+  },
+  {
+    title: 'LeNet CNN Digit Recognition',
+    description:
+      'Implemented LeNet-style convolutional neural networks from scratch in NumPy for MNIST digit classification. Built forward and backward passes for convolution, max-pooling, ReLU, and fully connected layers; trained the network and evaluated with confusion matrices. Extended the model to optical character recognition on real-world images and visualized intermediate feature maps from convolutional and ReLU layers.',
+    tech: [
+      'Python',
+      'NumPy',
+      'CNN',
+      'LeNet',
+      'MNIST',
+      'OpenCV',
+      'Backpropagation',
+    ],
+    link: null,
+    github: 'https://github.com/martinzukowski/rnn-cnn',
+    date: 'May 2026 | CMPT 412, SFU',
+    image: '/project-images/mnist-hw1.png',
+  },
+  {
     title: 'Interactive Particle System',
     description:
       'A beautiful web-based particle simulation where 300 red particles react dynamically to mouse movement on a navy blue canvas. Features smooth 60 FPS animation, real-time FPS counter, and modern UI with glassmorphism effects. Particles are attracted to the cursor and bounce off canvas edges, creating an engaging interactive experience.',
