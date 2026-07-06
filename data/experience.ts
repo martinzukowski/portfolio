@@ -51,6 +51,7 @@ export const allExperience: ExperienceItem[] = [
   {
     role: 'Junior Software Developer',
     company: 'Jellyfish Inc',
+    companyUrl: 'https://jellyfish-g.co.jp/',
     logo: '/project-images/jelly.webp',
     location: 'Remote (Tokyo, Japan)',
     date: 'January 2025 – May 2025',
