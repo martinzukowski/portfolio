@@ -23,7 +23,11 @@ export default function Hero() {
             <a href="#projects" className={styles.primaryBtn}>
               View My Work
             </a>
-            <a href="/resume.pdf" download className={styles.secondaryBtn}>
+            <a
+              href={config.resume.path}
+              download={config.resume.downloadName}
+              className={styles.secondaryBtn}
+            >
               Download Resume
             </a>
           </div>

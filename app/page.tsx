@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero'
 import About from '@/components/About'
+import Experience from '@/components/Experience'
 import Projects from '@/components/Projects'
 import Skills from '@/components/Skills'
 import Resume from '@/components/Resume'
@@ -12,6 +13,7 @@ export default function Home() {
     <main className={styles.main}>
       <Hero />
       <Navigation />
+      <Experience />
       <Projects />
       <Skills />
       <About />

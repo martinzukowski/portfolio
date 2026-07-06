@@ -6,10 +6,15 @@ export const config = {
   // Personal information
   personal: {
     name: 'Martin Zukowski',
-    title: 'Computer Science Student at SFU | Full Stack Developer',
+    title: 'Computer Science Student at SFU | ML Engineer Intern @ ThoughtsWin',
     email: 'mza150@sfu.ca',
     phone: '(778) 316-3212',
     location: 'Surrey, BC',
+  },
+
+  resume: {
+    path: '/Resume.pdf',
+    downloadName: 'Resume.pdf',
   },
   
   // Social links

@@ -1,4 +1,5 @@
 import styles from './Resume.module.css'
+import { config } from '@/config'
 
 export default function Resume() {
   return (
@@ -10,8 +11,8 @@ export default function Resume() {
         </p>
         <div className={styles.resumeButton}>
           <a
-            href="/resume.pdf"
-            download="Resume2025.pdf"
+            href={config.resume.path}
+            download={config.resume.downloadName}
             className={styles.downloadBtn}
           >
             <svg

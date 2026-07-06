@@ -79,6 +79,7 @@ export default function Navigation() {
           <span className={`${styles.burgerLine} ${isMenuOpen ? styles.open : ''}`}></span>
         </button>
         <ul className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ''}`}>
+          <li onClick={() => scrollToSection('experience')}>Experience</li>
           <li onClick={() => scrollToSection('projects')}>Projects</li>
           <li onClick={() => scrollToSection('skills')}>Skills</li>
           <li onClick={() => scrollToSection('about')}>About</li>

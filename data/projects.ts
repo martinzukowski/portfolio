@@ -11,6 +11,26 @@ export type ProjectItem = {
 /** Ordered from most recent to oldest */
 export const allProjects: ProjectItem[] = [
   {
+    title: 'Resume Tailor',
+    description:
+      'CLI tool that searches Indeed job postings, tailors your resume and cover letter with a local LLM (Ollama), and walks you through a human review step before you apply. Syncs public GitHub repos into a master resume, exports PDFs, and supports OpenAI as a fallback provider.',
+    tech: ['Python', 'Ollama', 'Playwright', 'LLM', 'PDF Export', 'CLI'],
+    link: null,
+    github: 'https://github.com/martinzukowski/resume-tailor',
+    date: 'July 2026',
+    image: '/project-images/tailor-resume-example-791x1024.png',
+  },
+  {
+    title: 'Mini RAG Demo',
+    description:
+      'End-to-end retrieval-augmented generation pipeline that chunks documents, embeds them in ChromaDB, retrieves relevant context, and generates grounded answers with Ollama. Includes a Streamlit chat UI, CLI tools, an MCP server for Cursor, and an optional tool-calling agent.',
+    tech: ['Python', 'RAG', 'Ollama', 'ChromaDB', 'Streamlit', 'MCP', 'OCR'],
+    link: 'https://rag-project-3.streamlit.app/',
+    github: 'https://github.com/martinzukowski/RAG-project',
+    date: 'July 2026',
+    image: '/project-images/rag-pipeline.png',
+  },
+  {
     title: 'Multi-View Stereo & 3D Reconstruction',
     description:
       'Built sparse and dense 3D reconstruction pipelines from multi-view images. Implemented the eight-point algorithm for fundamental matrix estimation, epipolar correspondence, essential matrix recovery, triangulation, and stereo rectification. Computed disparity and depth maps, estimated camera pose via DLT, and extended the pipeline to multi-view stereo with depth-map fusion and OBJ point-cloud export.',

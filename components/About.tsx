@@ -41,9 +41,9 @@ export default function About() {
         <div className={styles.content}>
           <div className={styles.text}>
             <p>
-              I&apos;m a Computer Science student at Simon Fraser University (SFU) with a passion for
-              building innovative full-stack applications and exploring the depths of machine learning
-              and systems programming.
+              I&apos;m a Computer Science student at Simon Fraser University (SFU) and ML Engineer
+              intern at ThoughtsWin Systems, with a passion for building innovative full-stack applications
+              and exploring the depths of machine learning and systems programming.
             </p>
             <p>
               When I&apos;m not coding, I participate in competitive programming sessions, practice algorithms
