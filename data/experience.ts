@@ -34,7 +34,7 @@ export const allExperience: ExperienceItem[] = [
     highlights: [
       'Diagnosed operational and systems issues and configured hardware at an automated distribution center supporting daily warehouse operations.',
     ],
-    tech: ['Systems Support', 'Hardware', 'Operations'],
+    tech: ['Systems Support', 'Hardware', 'Operations', 'SQL'],
   },
   {
     role: 'Software Engineer Intern',
