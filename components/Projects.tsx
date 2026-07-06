@@ -1,9 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { allProjects } from '@/data/projects'
 import styles from './Projects.module.css'
+
+const MIN_COL_WIDTH = 300
+const GRID_GAP = 32
 
 interface ProjectCardProps {
   title: string
@@ -95,26 +98,43 @@ function ProjectCard({ title, description, tech, link, github, date, image }: Pr
   )
 }
 
+function getColumnCount(width: number) {
+  return Math.max(1, Math.floor((width + GRID_GAP) / (MIN_COL_WIDTH + GRID_GAP)))
+}
+
 export default function Projects() {
-  const [displayCount, setDisplayCount] = useState(4)
-  const visibleProjects = allProjects.slice(0, displayCount)
-  const hasMore = displayCount < allProjects.length
-  const showLess = displayCount > 4
+  const gridRef = useRef<HTMLDivElement>(null)
+  const [columns, setColumns] = useState(1)
+  const [expanded, setExpanded] = useState(false)
 
-  const handleShowMore = () => {
-    setDisplayCount(allProjects.length)
-  }
+  useLayoutEffect(() => {
+    const grid = gridRef.current
+    if (!grid) return
 
-  const handleShowLess = () => {
-    setDisplayCount(4)
-  }
+    const updateColumns = () => {
+      setColumns(getColumnCount(grid.clientWidth))
+    }
+
+    updateColumns()
+
+    const observer = new ResizeObserver(updateColumns)
+    observer.observe(grid)
+
+    return () => observer.disconnect()
+  }, [])
+
+  const defaultCount = columns * 2
+  const visibleProjects = expanded
+    ? allProjects
+    : allProjects.slice(0, defaultCount)
+  const hasMore = !expanded && allProjects.length > defaultCount
 
   return (
     <section id="projects" className={styles.projects}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Projects</h2>
-        
-        <div className={styles.projectsGrid}>
+
+        <div ref={gridRef} className={styles.projectsGrid}>
           {visibleProjects.map((project, index) => (
             <ProjectCard key={`project-${index}`} {...project} />
           ))}
@@ -122,15 +142,15 @@ export default function Projects() {
 
         {hasMore && (
           <div className={styles.showMoreContainer}>
-            <button onClick={handleShowMore} className={styles.showMoreBtn}>
+            <button onClick={() => setExpanded(true)} className={styles.showMoreBtn}>
               Show More
             </button>
           </div>
         )}
 
-        {showLess && (
+        {expanded && allProjects.length > defaultCount && (
           <div className={styles.showMoreContainer}>
-            <button onClick={handleShowLess} className={styles.showMoreBtn}>
+            <button onClick={() => setExpanded(false)} className={styles.showMoreBtn}>
               Show Less
             </button>
           </div>
