@@ -110,8 +110,7 @@ export const allProjects: ProjectItem[] = [
     description:
       'Interactive map of public washrooms and parking meters across Vancouver. Fetches open city data and renders amenity locations on a Leaflet map with toggleable layers for washrooms and parking meters.',
     tech: ['React', 'TypeScript', 'Leaflet', 'Vite', 'Open Data'],
-    link: null,
-    github: 'https://github.com/martinzukowski/vanAmenities',
+    link: 'https://van-amenities.vercel.app/',
     date: 'July 2026',
     image: '/project-images/van-amenities.png',
   },
