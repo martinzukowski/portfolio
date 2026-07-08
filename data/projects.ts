@@ -86,6 +86,76 @@ export const allProjects: ProjectItem[] = [
     image: '/project-images/mnist-hw1.png',
   },
   {
+    title: 'Image Stitching with FAST Feature Detection',
+    description:
+      'Implemented FAST (Features from Accelerated Segment Test) interest point detector and used it to generate panoramas. Enhanced FAST with Harris cornerness metric for robust feature detection. Implemented feature matching using ORB/SURF/FREAK descriptors and used RANSAC to compute homographies for stitching multiple images together. Successfully created panoramas from 2 and 4 image sets with optimal parameter tuning.',
+    tech: ['MATLAB', 'Computer Vision', 'FAST Detector', 'RANSAC', 'Image Processing'],
+    link: null,
+    github: 'https://github.com/martinzukowski/image-stitching',
+    date: 'October 2025 | CMPT 361, SFU',
+    image: '/project-images/IStitch.jpg',
+  },
+  {
+    title: 'Machine Learning and Neural Network Models',
+    description:
+      'Built and trained supervised models to solve digit & binary classification, regression, and language identification. Implemented Naive Bayes with Laplace smoothing, Perceptron, and custom neural networks (FFNN and RNN) using autograd, achieving 97.5%+ and 85%+ accuracy on MNIST and language tasks respectively. Tuned hyperparameters (learning rate, layer size, activation) and applied gradient-based optimization with backpropagation.',
+    tech: ['Python', 'Machine Learning', 'Neural Networks', 'Autograd', 'NumPy'],
+    link: null,
+    github: 'https://github.com/martinzukowski/neural-network',
+    date: 'April 2025 | CMPT 310, SFU',
+    image: '/project-images/ml-models.jpg',
+  },
+  {
+    title: 'Vancouver Amenities Map',
+    description:
+      'Interactive map of public washrooms and parking meters across Vancouver. Fetches open city data and renders amenity locations on a Leaflet map with toggleable layers for washrooms and parking meters.',
+    tech: ['React', 'TypeScript', 'Leaflet', 'Vite', 'Open Data'],
+    link: null,
+    github: 'https://github.com/martinzukowski/vanAmenities',
+    date: 'July 2026',
+    image: '/project-images/van-amenities.png',
+  },
+  {
+    title: 'Pocket Pet',
+    description:
+      'Manifest V3 browser extension that spawns a small cat on any webpage every few minutes. Pet it with your cursor to fill a happiness bar, trigger a hearts celebration at 100%, and customize spawn frequency from the popup settings.',
+    tech: ['JavaScript', 'Chrome Extension', 'Manifest V3', 'CSS'],
+    link: null,
+    github: 'https://github.com/martinzukowski/catExtendo',
+    date: 'July 2026',
+    image: '/project-images/pocket-pet.png',
+  },
+  {
+    title: 'PitchIQ',
+    description:
+      'Free, local soccer clip analyzer that uploads match footage and produces a player performance map with team-aware ratings. Uses YOLOv8n for player detection, shot-boundary detection for camera cuts, and jersey-color clustering to assign teams.',
+    tech: ['JavaScript', 'Python', 'FastAPI', 'YOLOv8', 'OpenCV', 'Vite'],
+    link: null,
+    github: 'https://github.com/martinzukowski/pitchIQ',
+    date: 'July 2026',
+    image: '/project-images/pitchiq.png',
+  },
+  {
+    title: 'ASL Fingerspelling Teacher',
+    description:
+      'Real-time ASL fingerspelling teacher using webcam hand tracking with MediaPipe and OpenCV. Detects 15 ASL letters from hand landmarks, builds fingerspelled words with practice prompts, and includes interactive pose-detection easter eggs.',
+    tech: ['Python', 'MediaPipe', 'OpenCV', 'Computer Vision'],
+    link: null,
+    github: 'https://github.com/martinzukowski/ASLproject',
+    date: 'July 2026',
+    image: '/project-images/asl-project.png',
+  },
+  {
+    title: 'Interview Prep Assistant',
+    description:
+      'AI-powered interview preparation tool that analyzes your resume against a job posting. Generates tailored behavioral and technical questions, STAR-format answers, an ATS compatibility score, and voice practice with feedback on clarity and structure.',
+    tech: ['TypeScript', 'Next.js', 'Ollama', 'LLM', 'PDF Parsing'],
+    link: null,
+    github: 'https://github.com/martinzukowski/interviewPrep',
+    date: 'July 2026',
+    image: '/project-images/interview-prep.png',
+  },
+  {
     title: 'Interactive Particle System',
     description:
       'A beautiful web-based particle simulation where 300 red particles react dynamically to mouse movement on a navy blue canvas. Features smooth 60 FPS animation, real-time FPS counter, and modern UI with glassmorphism effects. Particles are attracted to the cursor and bounce off canvas edges, creating an engaging interactive experience.',
@@ -106,16 +176,6 @@ export const allProjects: ProjectItem[] = [
     image: '/project-images/Ifiltering.png',
   },
   {
-    title: 'Image Stitching with FAST Feature Detection',
-    description:
-      'Implemented FAST (Features from Accelerated Segment Test) interest point detector and used it to generate panoramas. Enhanced FAST with Harris cornerness metric for robust feature detection. Implemented feature matching using ORB/SURF/FREAK descriptors and used RANSAC to compute homographies for stitching multiple images together. Successfully created panoramas from 2 and 4 image sets with optimal parameter tuning.',
-    tech: ['MATLAB', 'Computer Vision', 'FAST Detector', 'RANSAC', 'Image Processing'],
-    link: null,
-    github: 'https://github.com/martinzukowski/image-stitching',
-    date: 'October 2025 | CMPT 361, SFU',
-    image: '/project-images/IStitch.jpg',
-  },
-  {
     title: 'Rasterization: Lines and Triangles',
     description:
       'Implemented rasterization algorithms for drawing lines and solid triangles with interpolated colors. Developed DDA line rasterization algorithm handling all orientations, implemented color interpolation along lines, and created triangle inside-outside test using half-plane algorithm. Implemented barycentric color interpolation for smooth color gradients across triangles, following the top-left rule for proper edge handling.',
@@ -134,16 +194,6 @@ export const allProjects: ProjectItem[] = [
     github: 'https://github.com/martinzukowski/mdp-rl',
     date: 'May 2025 | CMPT 310, SFU',
     image: '/project-images/mdprl.jpg',
-  },
-  {
-    title: 'Machine Learning and Neural Network Models',
-    description:
-      'Built and trained supervised models to solve digit & binary classification, regression, and language identification. Implemented Naive Bayes with Laplace smoothing, Perceptron, and custom neural networks (FFNN and RNN) using autograd, achieving 97.5%+ and 85%+ accuracy on MNIST and language tasks respectively. Tuned hyperparameters (learning rate, layer size, activation) and applied gradient-based optimization with backpropagation.',
-    tech: ['Python', 'Machine Learning', 'Neural Networks', 'Autograd', 'NumPy'],
-    link: null,
-    github: 'https://github.com/martinzukowski/neural-network',
-    date: 'April 2025 | CMPT 310, SFU',
-    image: '/project-images/ml-models.jpg',
   },
   {
     title: 'AI Stock Advisor',
