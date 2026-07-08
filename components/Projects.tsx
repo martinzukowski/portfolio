@@ -1,22 +1,18 @@
 'use client'
 
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
-import { allProjects } from '@/data/projects'
+import {
+  allProjects,
+  projectCategories,
+  type ProjectCategory,
+  type ProjectItem,
+} from '@/data/projects'
 import styles from './Projects.module.css'
 
-const MIN_COL_WIDTH = 300
-const GRID_GAP = 32
+type FilterId = 'all' | ProjectCategory
 
-interface ProjectCardProps {
-  title: string
-  description: string
-  tech: string[]
-  link: string | null
-  github: string | null
-  date?: string | null
-  image?: string | null
-}
+interface ProjectCardProps extends ProjectItem {}
 
 function ProjectCard({ title, description, tech, link, github, date, image }: ProjectCardProps) {
   return (
@@ -64,8 +60,8 @@ function ProjectCard({ title, description, tech, link, github, date, image }: Pr
         <p className={styles.projectDescription}>{description}</p>
         {tech.length > 0 && (
           <div className={styles.projectTech}>
-            {tech.map((techItem, techIndex) => (
-              <span key={techIndex} className={styles.techTag}>
+            {tech.map((techItem) => (
+              <span key={techItem} className={styles.techTag}>
                 {techItem}
               </span>
             ))}
@@ -98,61 +94,160 @@ function ProjectCard({ title, description, tech, link, github, date, image }: Pr
   )
 }
 
-function getColumnCount(width: number) {
-  return Math.max(1, Math.floor((width + GRID_GAP) / (MIN_COL_WIDTH + GRID_GAP)))
-}
-
 export default function Projects() {
-  const gridRef = useRef<HTMLDivElement>(null)
-  const [columns, setColumns] = useState(1)
-  const [expanded, setExpanded] = useState(false)
+  const [activeFilter, setActiveFilter] = useState<FilterId>('all')
+  const [activeIndex, setActiveIndex] = useState(0)
+  const touchStartX = useRef<number | null>(null)
 
-  useLayoutEffect(() => {
-    const grid = gridRef.current
-    if (!grid) return
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === 'all') return allProjects
+    return allProjects.filter((project) => project.categories.includes(activeFilter))
+  }, [activeFilter])
 
-    const updateColumns = () => {
-      setColumns(getColumnCount(grid.clientWidth))
+  const total = filteredProjects.length
+  const currentProject = filteredProjects[activeIndex]
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (total === 0) return
+      setActiveIndex(((index % total) + total) % total)
+    },
+    [total],
+  )
+
+  const goPrev = useCallback(() => goTo(activeIndex - 1), [activeIndex, goTo])
+  const goNext = useCallback(() => goTo(activeIndex + 1), [activeIndex, goTo])
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    touchStartX.current = event.touches[0].clientX
+  }
+
+  const handleTouchEnd = (event: React.TouchEvent) => {
+    if (touchStartX.current === null) return
+
+    const deltaX = event.changedTouches[0].clientX - touchStartX.current
+    const swipeThreshold = 50
+
+    if (deltaX > swipeThreshold) goPrev()
+    else if (deltaX < -swipeThreshold) goNext()
+
+    touchStartX.current = null
+  }
+
+  useEffect(() => {
+    setActiveIndex(0)
+  }, [activeFilter])
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') goPrev()
+      if (event.key === 'ArrowRight') goNext()
     }
 
-    updateColumns()
-
-    const observer = new ResizeObserver(updateColumns)
-    observer.observe(grid)
-
-    return () => observer.disconnect()
-  }, [])
-
-  const defaultCount = columns * 2
-  const visibleProjects = expanded
-    ? allProjects
-    : allProjects.slice(0, defaultCount)
-  const hasMore = !expanded && allProjects.length > defaultCount
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [goPrev, goNext])
 
   return (
     <section id="projects" className={styles.projects}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>Projects</h2>
 
-        <div ref={gridRef} className={styles.projectsGrid}>
-          {visibleProjects.map((project, index) => (
-            <ProjectCard key={`project-${index}`} {...project} />
+        <div className={styles.filters} role="tablist" aria-label="Filter projects by category">
+          {projectCategories.map((category) => (
+            <button
+              key={category.id}
+              type="button"
+              role="tab"
+              aria-selected={activeFilter === category.id}
+              className={`${styles.filterBtn} ${
+                activeFilter === category.id ? styles.filterBtnActive : ''
+              }`}
+              onClick={() => setActiveFilter(category.id)}
+            >
+              {category.label}
+            </button>
           ))}
         </div>
 
-        {hasMore && (
-          <div className={styles.showMoreContainer}>
-            <button onClick={() => setExpanded(true)} className={styles.showMoreBtn}>
-              Show More
+        {total === 0 ? (
+          <p className={styles.emptyState}>No projects in this category yet.</p>
+        ) : (
+          <div className={styles.carousel}>
+            <button
+              type="button"
+              className={styles.carouselBtn}
+              onClick={goPrev}
+              aria-label="Previous project"
+            >
+              ‹
+            </button>
+
+            <div
+              className={styles.carouselViewport}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div
+                className={styles.carouselTrack}
+                style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+              >
+                {filteredProjects.map((project) => (
+                  <div key={project.title} className={styles.carouselSlide}>
+                    <ProjectCard {...project} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className={styles.carouselBtn}
+              onClick={goNext}
+              aria-label="Next project"
+            >
+              ›
             </button>
           </div>
         )}
 
-        {expanded && allProjects.length > defaultCount && (
-          <div className={styles.showMoreContainer}>
-            <button onClick={() => setExpanded(false)} className={styles.showMoreBtn}>
-              Show Less
-            </button>
+        {total > 0 && (
+          <div className={styles.carouselFooter}>
+            <div className={styles.mobileNav}>
+              <button
+                type="button"
+                className={styles.carouselBtn}
+                onClick={goPrev}
+                aria-label="Previous project"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className={styles.carouselBtn}
+                onClick={goNext}
+                aria-label="Next project"
+              >
+                ›
+              </button>
+            </div>
+            <p className={styles.carouselCounter}>
+              {activeIndex + 1} of {total}
+              {currentProject ? ` — ${currentProject.title}` : ''}
+            </p>
+            <div
+              className={styles.progressBar}
+              role="progressbar"
+              aria-valuenow={activeIndex + 1}
+              aria-valuemin={1}
+              aria-valuemax={total}
+              aria-label="Project carousel progress"
+            >
+              <div
+                className={styles.progressFill}
+                style={{ width: `${((activeIndex + 1) / total) * 100}%` }}
+              />
+            </div>
           </div>
         )}
       </div>
