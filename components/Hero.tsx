@@ -16,7 +16,6 @@ export default function Hero() {
             {config.personal.title}
           </p>
           <p className={styles.description}>
-            I build beautiful, functional, and user-centered digital experiences.
             Welcome to my corner of the internet.
           </p>
           <div className={styles.buttons}>
