@@ -41,6 +41,17 @@ export const allProjects: ProjectItem[] = [
     image: '/project-images/pointcloud-calc.png',
   },
   {
+    title: 'Game Center',
+    description:
+      'A collection of browser games built from scratch and deployed as one static site. Includes Gemwright, a Splendor-inspired engine builder whose Hard bot uses determinized Monte-Carlo rollouts with only human-visible information; Imperium Mercatorum, a Concordia-inspired strategy game against AI bots; Globle, a 3D-globe geography puzzle; and a webcam Rubik\'s cube scanner and solver. Each rules engine is pure TypeScript, independent of React, and tested with full simulated games.',
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Zustand', 'Vitest', 'D3', 'Vercel'],
+    categories: ['Web Dev', 'AI/ML'],
+    link: 'https://game-center-kappa-five.vercel.app/',
+    github: 'https://github.com/martinzukowski/BGA-clone',
+    date: 'September 2026',
+    image: '/project-images/game-center.jpg',
+  },
+  {
     title: 'Resume Tailor',
     description:
       'CLI tool that searches Indeed job postings, tailors your resume and cover letter with a local LLM (Ollama), and walks you through a human review step before you apply. Syncs public GitHub repos into a master resume, exports PDFs, and supports OpenAI as a fallback provider.',
